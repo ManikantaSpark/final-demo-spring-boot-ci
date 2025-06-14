@@ -1,0 +1,9 @@
+<project name="RunTestNG" default="testng" basedir=".">
+    <property name="testng.groups" value="sanity"/>
+    <target name="testng">
+        <taskdef name="testng" classname="org.testng.TestNGAntTask" classpath="src/test/resources;target/test-classes;target/classes;.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar"/>
+        <testng outputdir="target/testng-results" groups="${testng.groups}" suitename="Functional Group Suite">
+            <xmlfileset dir="." includes="testng.xml"/>
+        </testng>
+    </target>
+</project>

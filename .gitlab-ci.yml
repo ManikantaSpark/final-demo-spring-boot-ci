@@ -1,0 +1,23 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  image: maven:3.9.6-eclipse-temurin-21
+  script:
+    - mvn test "-Dsurefire.suiteXmlFiles=testng.xml"
+  artifacts:
+    paths:
+      - test-results.json
+
+deploy-dashboard-json:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - test
+  script:
+    - mkdir -p dashboard-backend/src/main/resources/
+    - cp test-results.json dashboard-backend/src/main/resources/
+  only:
+    - main

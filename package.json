@@ -1,0 +1,23 @@
+{
+  "name": "final-demo-sample-spring-boot-project",
+  "version": "1.0.0",
+  "description": "A complete Spring Boot web application for an online store with product listing, shopping cart, and checkout functionality. This application is built according to the provided OpenAPI 3.0 specification.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/SparkTech-group/final-demo-sample-spring-boot-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/SparkTech-group/final-demo-sample-spring-boot-project/issues"
+  },
+  "homepage": "https://gitlab.com/SparkTech-group/final-demo-sample-spring-boot-project#readme",
+  "devDependencies": {
+    "playwright": "^1.53.0"
+  }
+}

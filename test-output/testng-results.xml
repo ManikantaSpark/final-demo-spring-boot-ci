@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-13T23:33:04 CDT" name="Functional Group Suite" finished-at="2025-06-13T23:33:04 CDT" duration-ms="0">
+    <groups>
+    </groups>
+  </suite> <!-- Functional Group Suite -->
+  <suite started-at="2025-06-13T23:33:04 CDT" name="Functional Group Suite (0)" finished-at="2025-06-13T23:33:04 CDT" duration-ms="81">
+    <groups>
+      <group name="product">
+        <method signature="FunctionalTestSuiteTest.testListAllProducts()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testListAllProducts" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+      </group> <!-- product -->
+      <group name="smoke">
+        <method signature="FunctionalTestSuiteTest.testCheckout()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testCheckout" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+        <method signature="FunctionalTestSuiteTest.testListAllProducts()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testListAllProducts" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="FunctionalTestSuiteTest.testCheckout()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testCheckout" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+        <method signature="FunctionalTestSuiteTest.testGetCurrentCart()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testGetCurrentCart" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+        <method signature="FunctionalTestSuiteTest.testListAllProducts()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testListAllProducts" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+      </group> <!-- sanity -->
+      <group name="cart">
+        <method signature="FunctionalTestSuiteTest.testGetCurrentCart()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testGetCurrentCart" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+      </group> <!-- cart -->
+      <group name="order">
+        <method signature="FunctionalTestSuiteTest.testCheckout()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" name="testCheckout" class="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest"/>
+      </group> <!-- order -->
+    </groups>
+    <test started-at="2025-06-13T23:33:04 CDT" name="Sanity and Cart" finished-at="2025-06-13T23:33:04 CDT" duration-ms="81">
+      <class name="com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest">
+        <test-method signature="testCheckout()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" started-at="2025-06-13T23:33:04 CDT" name="testCheckout" finished-at="2025-06-13T23:33:04 CDT" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckout -->
+        <test-method signature="testGetCurrentCart()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" started-at="2025-06-13T23:33:04 CDT" name="testGetCurrentCart" finished-at="2025-06-13T23:33:04 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetCurrentCart -->
+        <test-method signature="testListAllProducts()[pri:0, instance:com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest@d87ec4d]" started-at="2025-06-13T23:33:04 CDT" name="testListAllProducts" finished-at="2025-06-13T23:33:04 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testListAllProducts -->
+      </class> <!-- com.example.Final.Demo.Spring.Project.functional.FunctionalTestSuiteTest -->
+    </test> <!-- Sanity and Cart -->
+  </suite> <!-- Functional Group Suite (0) -->
+</testng-results>
