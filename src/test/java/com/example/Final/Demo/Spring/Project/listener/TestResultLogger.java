@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestResultLogger implements ITestListener {
-    private static final String FILE_NAME = "test-results.json";
+    private static final String FILE_NAME = "target/test-results.json";
     private List<String> results = new ArrayList<>();
     private FileWriter writer;
 

@@ -9,7 +9,7 @@ test:
     - mvn test "-Dsurefire.suiteXmlFiles=testng.xml"
   artifacts:
     paths:
-      - test-results.json
+      - target/test-results.json
 
 deploy-dashboard-json:
   stage: deploy
@@ -18,6 +18,6 @@ deploy-dashboard-json:
     - test
   script:
     - mkdir -p dashboard-backend/src/main/resources/
-    - cp test-results.json dashboard-backend/src/main/resources/
+    - cp target/test-results.json dashboard-backend/src/main/resources/
   only:
     - main
