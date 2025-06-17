@@ -5,18 +5,30 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestResultLogger implements ITestListener {
-    private static final String FILE_NAME = "target/test-results.json";
+    private String fileName;
     private List<String> results = new ArrayList<>();
     private FileWriter writer;
 
     @Override
     public void onStart(ITestContext context) {
         try {
-            writer = new FileWriter(FILE_NAME, false);
+            Files.createDirectories(Paths.get("test-results"));
+            String pipelineId = System.getenv("CI_PIPELINE_ID");
+            if (pipelineId != null && !pipelineId.isEmpty()) {
+                fileName = "test-results/test-results-" + pipelineId + ".json";
+            } else {
+                String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss"));
+                fileName = "test-results/test-results-" + timestamp + ".json";
+            }
+            writer = new FileWriter(fileName, false);
             writer.write("[\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
