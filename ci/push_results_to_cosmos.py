@@ -46,9 +46,9 @@ def main():
         # Connect to CosmosDB with correct database and container names
         client = CosmosClient.from_connection_string(args.conn)
         db = client.get_database_client('sonarqubecosmos')  # Fixed database name
-        container = db.get_container_client('Results')      # Fixed container name
+        container = db.get_container_client('TestResultsDB') # Fixed container name
         
-        print(f"Connected to database: sonarqubecosmos, container: Results")
+        print(f"Connected to database: sonarqubecosmos, container: TestResultsDB")
 
         # Read the TestNG XML results
         xml_file_path = 'target/surefire-reports/testng-results.xml'
