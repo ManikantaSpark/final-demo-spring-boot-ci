@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import json
-import xml.etree.ElementTree as ET
-from datetime import datetime
 from azure.cosmos import CosmosClient
 
 def main():
@@ -14,11 +11,33 @@ def main():
     try:
         # Connect to CosmosDB
         client = CosmosClient.from_connection_string(args.conn)
-        db = client.get_database_client('sonarqubecosmos')
         
-        print(f"✅ Connected to database: sonarqubecosmos")
+        print("✅ Connected to CosmosDB successfully")
         
-        # List all containers in the database
+        # List all databases
+        print("🔍 Available databases:")
+        databases = client.list_databases()
+        database_names = []
+        for database in databases:
+            db_name = database['id']
+            database_names.append(db_name)
+            print(f"  - {db_name}")
+        
+        if not database_names:
+            print("❌ No databases found!")
+            return
+            
+        # Try to find the right database
+        if 'sonarqubecosmos' in database_names:
+            target_db = 'sonarqubecosmos'
+        else:
+            target_db = database_names[0]  # Use first available
+            print(f"⚠️ 'sonarqubecosmos' not found, using: {target_db}")
+            
+        print(f"🎯 Using database: {target_db}")
+        db = client.get_database_client(target_db)
+        
+        # Now list containers
         print("🔍 Available containers:")
         containers = db.list_containers()
         container_names = []
@@ -26,30 +45,18 @@ def main():
             container_name = container['id']
             container_names.append(container_name)
             print(f"  - {container_name}")
-        
-        # Try to find the right container
-        if 'TestResultsDB' in container_names:
-            container_name = 'TestResultsDB'
-        elif 'Results' in container_names:
-            container_name = 'Results'
-        elif len(container_names) > 0:
-            # Use the first available container
-            container_name = container_names[0]
-            print(f"⚠️  Using first available container: {container_name}")
-        else:
+            
+        if not container_names:
             print("❌ No containers found!")
             return
             
-        print(f"🎯 Attempting to use container: {container_name}")
+        # Use first available container
+        container_name = container_names[0]
+        print(f"🎯 Using container: {container_name}")
         container = db.get_container_client(container_name)
         
-        # Read the TestNG XML results
-        xml_file_path = 'target/surefire-reports/testng-results.xml'
-        with open(xml_file_path, 'r') as f:
-            xml_content = f.read()
-        print(f"✅ Successfully read TestNG results from: {xml_file_path}")
-        
-        # Create a simple test item first
+        # Create a simple test item
+        from datetime import datetime
         test_item = {
             'id': f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
             'suite': args.suite,
@@ -60,7 +67,9 @@ def main():
         
         # Insert test item
         result = container.upsert_item(test_item)
-        print(f"✅ Successfully pushed test item to CosmosDB!")
+        print(f"✅ SUCCESS! Test item inserted into CosmosDB!")
+        print(f"📊 Database: {target_db}")
+        print(f"📊 Container: {container_name}")
         print(f"📊 Document ID: {test_item['id']}")
         
     except Exception as e:
